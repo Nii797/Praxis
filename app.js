@@ -1,4 +1,4 @@
-// Latihan artmatika 
+// Latihan Array 
 
 const express = require('express');
 const app = express();
