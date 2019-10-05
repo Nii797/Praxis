@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const array_lib = require("./array");
 const object_lib = require("./object");
-const array_routes = require9("./routes");
+const array_routes = require("./routes");
 const array_sort = require("./lib/task1");
 
 // untuk memberikan parsing   
