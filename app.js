@@ -29,7 +29,7 @@ app.get("/contoh-2", (req,res) => {
         gender      : "Male"
     };
 
-    let result = object_lib.manipulation(data);
+    let result = object_lib.manipulate(data);
     return res.send(result);
 });
 
@@ -70,6 +70,8 @@ app.get("/arrayforeach", (req, res) => {
     array.forEach(function(element) {
         console.log(element);
     });
+
+    return array;
 });
 
 app.get("/oop", (req, res) => {
@@ -82,14 +84,16 @@ app.get("/oop", (req, res) => {
     }
 
     let employee = {
-        BaseSalary  : 30000,
-        overtime    : 10,
-        rate        : 20,
-        getWage     : function() {
+    
+        BaseSalary: 30000,
+        overtime: 10,
+        rate:20,
+        getWage: function() {
             return this.BaseSalary + (this.overtime * this.rate);
         }
     };
-employee.getWage();      
+
+employee.getWage(); 
 });
 
 app.use("/array", array_routes);
