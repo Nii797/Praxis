@@ -1,1 +1,1 @@
-# learn abaout aritmatika in Node.js
+# learn about aritmatika in Node.js
