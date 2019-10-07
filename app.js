@@ -1,14 +1,12 @@
-const fs = require('fs');
-const path = require('path');
+const express = require('express')
+const app = express()
+require("./db") // database connection
 
-var filesFolderPath = path.resolve(__dirname, 'files');
+// for parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }))
 
-var filesNames = fs.readdirSync(filesFolderPath);
-// [ 'f1', 'f2', 'f3', 'f4', ]
+require('./routes/main')(app) // all routes imported
 
-var contents = [];
-function step(i) {
-    if(i < filesNames.length){
-        var filePath = path.resolve(filesFolderPath, filesNames)
-    }
-}
+app.listen(3300, () => {
+    console.log(`Example app listening on port 3300`)
+})
