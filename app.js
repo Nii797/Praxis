@@ -1,23 +1,14 @@
-// learn about looping
+const fs = require('fs');
+const path = require('path');
 
-const express = require('express');
-const app = express();
+var filesFolderPath = path.resolve(__dirname, 'files');
 
-app.use(express.urlencoded({extended: true}));
+var filesNames = fs.readdirSync(filesFolderPath);
+// [ 'f1', 'f2', 'f3', 'f4', ]
 
-app.get("/tes-get", (req, res) => {
-    console.log("Hello Smart people");
-});
-
-app.get("/for", (req, res) => {
-    var array = ['a', 'b', 'c'];
-    for (var i=0; 1<array.length; i++) {
-        console.log(array[i]);
+var contents = [];
+function step(i) {
+    if(i < filesNames.length){
+        var filePath = path.resolve(filesFolderPath, filesNames)
     }
-
-    return res.send(array);
-})
-
-app.listen(3300, () => {
-    console.log('Example app listening on port 3300');
-});
+}
