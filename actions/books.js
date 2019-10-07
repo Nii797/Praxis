@@ -24,13 +24,13 @@ const create = (req) => {
 }
 
 const getAll = async () => {
-    let query = await Book.find({})
-        .populate([
-            {
-                path: 'author',
-                model: User
-            }
-        ]).exec()
+    let query = await Book.find({}).exec()
+        // .populate([
+        //     {
+        //         path: 'author',
+        //         model: User
+        //     }
+        // ])
 
     return query
 }
