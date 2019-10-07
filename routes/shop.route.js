@@ -4,7 +4,7 @@ const Shop = require("../actions/shop.action")
 const ShowShop = require("../actions/shops/show.action")
 const CreateShop = require("../actions/shops/create.action")
 
-router.post("/", async (req, res, next) => {
+router.post("/create", async (req, res, next) => {
     try {
         let data = await new CreateShop(req).exec()
 
