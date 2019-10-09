@@ -3,6 +3,7 @@ const router = express.Router()
 const Shop = require("../actions/shop.action")
 const ShowShop = require("../actions/shops/show.action")
 const CreateShop = require("../actions/shops/create.action")
+const UpdateShop = require("../actions/shops/update.action")
 
 router.post("/", async (req, res, next) => {
     try {
@@ -50,6 +51,31 @@ router.get("/:id", async (req, res, next) => {
             message: "Get detail of shop"
         })
     } catch(err) {
+        return res.status(400).json({
+            status: "error",
+            message: err.message
+        })
+    }
+})
+
+router.put("/:id", async (req, res, next) => {
+    let {id} = req.params
+    let updated_data = {
+        name: req.body.name,
+        description: req.body.description,
+        owner: req.body.owner  
+    }
+    
+    try{
+        let data = await UpdateShop(id, updated_data)
+        
+        return res.status(200).json({
+            status: "sukses",
+            data,
+            message: "data shop terupdate"
+        })
+        
+    } catch(err){
         return res.status(400).json({
             status: "error",
             message: err.message

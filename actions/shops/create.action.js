@@ -18,7 +18,7 @@ class CreateShop {
 
             return query
         } catch(err) {
-            throw err
+            throw err   
         }
     }
 }
