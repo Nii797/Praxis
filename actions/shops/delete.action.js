@@ -1,21 +1,17 @@
 const Shop = require("../../models/shop.model")
 
 class Delete {
-    constructor(params, deleted) {
-        this.params  = params,
-        this.deleted = deleted
+    constructor(id) {
+        this.id = id
     }
 
     async exec() {
         try {
-            let del = await Shop.findByIdAndDelete(
-                this.params,
-                this.deleted,
-                {
-                    new: true
-                }).exec()
+            let query = await Shop.findOneAndDelete({
+                _id: this.id
+            }).exec()
 
-                return del
+            return query
         } catch (err) {
             throw err
         }
