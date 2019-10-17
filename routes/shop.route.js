@@ -3,6 +3,8 @@ const router = express.Router()
 const Shop = require("../actions/shop.action")
 const ShowShop = require("../actions/shops/show.action")
 const CreateShop = require("../actions/shops/create.action")
+const Update = require("../actions/shops/update.action")
+
 
 router.post("/", async (req, res, next) => {
     try {
@@ -52,6 +54,25 @@ router.get("/:id", async (req, res, next) => {
     } catch(err) {
         return res.status(400).json({
             status: "error",
+            message: err.message
+        })
+    }
+})
+
+router.put("/:id", async (req, res) => {
+    try {
+        let { id } = req.params
+        let data = await new Update(id, req).exec() 
+        // console.log(`type of Update is ${typeof Update}`)
+
+        return res.status(200).json({
+            status: "Success",
+            data,
+            message: "Data update"
+        })
+    } catch (err) {
+        return res.status(400).json({
+            status: "error update",
             message: err.message
         })
     }
